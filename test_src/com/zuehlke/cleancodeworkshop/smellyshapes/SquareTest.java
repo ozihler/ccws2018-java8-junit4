@@ -1,25 +1,24 @@
 package com.zuehlke.cleancodeworkshop.smellyshapes;
 
-import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 @DisplayName("A square")
 public class SquareTest {
 
     @Test
-    @DisplayName("calculates its area according to edge length")
+    @DisplayName("should have an area of 4 when the edge length is 2")
     public void calculateArea() {
         Square square = new Square(0, 0, 2);
         assertEquals(4, square.calculate());
     }
 
     @Test
-    @DisplayName("prints its contents")
-    public void toString_() {
+    @DisplayName("has a formatted toString() method")
+    public void squareToString() {
         Square square = new Square(0, 0, 1, new Color("Red"));
         assertEquals("Square: (0,0) edgeLength=1 color=#FF0000", square.toString());
     }
@@ -49,9 +48,9 @@ public class SquareTest {
         assertFalse(square.containsPoint(2, 1));
     }
 
+    @Test
     @DisplayName("throws an exception when getHeight() is called")
-    @Test(expected = RuntimeException.class)
     public void getHeigth() {
-        new Square(0, 0, 0).getHeight();
+        assertThrows(RuntimeException.class, () -> new Square(0, 0, 0).getHeight());
     }
 }
