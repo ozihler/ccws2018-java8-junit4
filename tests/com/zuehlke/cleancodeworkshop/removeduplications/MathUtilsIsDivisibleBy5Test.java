@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("isDivisibleBy5")
 public class MathUtilsIsDivisibleBy5Test {
-// ----------------------------------------------------------
 
     @Test
     @DisplayName("returns true if the numerator is positive and divisible by 5")
