@@ -9,7 +9,7 @@
     <version>1.0</version>
     <build>
         <sourceDirectory>src</sourceDirectory>
-        <testSourceDirectory>test_src</testSourceDirectory>
+        <testSourceDirectory>tests</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
