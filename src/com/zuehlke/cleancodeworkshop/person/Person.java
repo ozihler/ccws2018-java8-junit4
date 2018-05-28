@@ -11,7 +11,7 @@ public class Person {
 	private boolean capitalizeSurname;
 	private boolean olympicMode;
 
-	private static List<String> surnameFirst = new ArrayList<String>();
+	private static List<String> surnameFirst = new ArrayList<>();
 	static {
 		surnameFirst.add("CHN");
 		surnameFirst.add("KOR");
