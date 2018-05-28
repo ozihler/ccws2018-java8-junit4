@@ -44,6 +44,8 @@ public class ShapeGroup extends ComplexShape {
     }
 
     public boolean contains(int x, int y) {
-        return Arrays.stream(shapes).filter(Objects::nonNull).anyMatch(shape -> shape.contains(x, y));
+        return Arrays.stream(shapes)
+                .filter(Objects::nonNull)
+                .anyMatch(shape -> shape.contains(x, y));
     }
 }
