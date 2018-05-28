@@ -100,7 +100,7 @@ public class ShapeGroupTest {
 
 
         @Test
-        @DisplayName("increases the number of elements it can hold once exceeded")
+        @DisplayName("increases the number of elements it can hold on add once exceeded")
         public void add_internalArraySizeExceeded() {
             shapeGroup.setReadOnly(false);
 
@@ -112,7 +112,7 @@ public class ShapeGroupTest {
         }
 
         @Test
-        @DisplayName("won't increase the number of elements if the size limit is reached but already contains the element")
+        @DisplayName("won't increase the number of elements on add if the size limit is reached but already contains the element")
         public void add_notIncreasingSizeIfElementNotAdded() {
             shapeGroup.setReadOnly(false);
 
