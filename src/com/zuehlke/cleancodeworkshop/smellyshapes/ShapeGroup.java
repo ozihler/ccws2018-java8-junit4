@@ -8,7 +8,8 @@ public class ShapeGroup extends ComplexShape {
     Shape[] shapes = new Shape[10];
     int size = 0;
 
-    public ShapeGroup() {}
+    public ShapeGroup() {
+    }
 
     public ShapeGroup(Shape[] shapes, boolean readOnly) {
         this.shapes = shapes;
@@ -18,19 +19,18 @@ public class ShapeGroup extends ComplexShape {
 
     public void add(Shape shape) {
         if (!readOnly) {
-            int newSize = size + 1;
-            if (newSize > shapes.length) {
-                var newShapes = new Shape[shapes.length + 10];
-                for (int i = 0; i < size; i++) {
-                    newShapes[i] = shapes[i];
+            if (!contains(shape)) {
+                int newSize = size + 1;
+                if (newSize > shapes.length) {
+                    var newShapes = new Shape[shapes.length + 10];
+                    for (int i = 0; i < size; i++) {
+                        newShapes[i] = shapes[i];
+                    }
+                    shapes = newShapes;
                 }
-                shapes = newShapes;
-            }
 
-            if (contains(shape)) {
-                return;
+                shapes[size++] = shape;
             }
-            shapes[size++] = shape;
         }
     }
 
