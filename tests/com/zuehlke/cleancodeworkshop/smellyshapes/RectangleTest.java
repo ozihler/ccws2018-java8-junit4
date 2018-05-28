@@ -1,22 +1,22 @@
 package com.zuehlke.cleancodeworkshop.smellyshapes;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RectangleTest {
 
     private Rectangle rectangle;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         rectangle = new Rectangle(0, 0, 2, 1);
     }
 
     @Test
+    @DisplayName("returns true if it contains a point and false if not")
     public void contains() {
         assertTrue(rectangle.contains(0, 0));
         assertTrue(rectangle.contains(1, 0));
@@ -29,11 +29,13 @@ public class RectangleTest {
     }
 
     @Test
+    @DisplayName("should have an area of 2 when the width is 2 and the hight is 1")
     public void calculateArea() {
         assertEquals(2, rectangle.calculate());
     }
 
     @Test
+    @DisplayName("returns a valid xml representation when converted to xml")
     public void toXml() {
         String xml = rectangle.toXml();
 
@@ -41,6 +43,7 @@ public class RectangleTest {
     }
 
     @Test
+    @DisplayName("returns a formatted string when converted to string")
     public void toString_() {
 
         assertEquals("Rectangle: (0,0) width=2 height=1 color=#00FF00", rectangle.toString());

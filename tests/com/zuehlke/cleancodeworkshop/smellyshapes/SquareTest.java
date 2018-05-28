@@ -24,7 +24,7 @@ public class SquareTest {
     }
 
     @Test
-    @DisplayName("can be converted to xml")
+    @DisplayName("returns a valid xml representation when converted to xml")
     public void toXml() {
         Square square = new Square(0, 1, 2);
         String xml = square.toXml();
