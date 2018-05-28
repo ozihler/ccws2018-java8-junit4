@@ -1,5 +1,8 @@
 package com.zuehlke.cleancodeworkshop.smellyshapes;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class ShapeGroup extends ComplexShape {
 
     Shape[] shapes = new Shape[10];
@@ -17,7 +20,7 @@ public class ShapeGroup extends ComplexShape {
         if (!readOnly) {
             int newSize = size + 1;
             if (newSize > shapes.length) {
-                Shape[] newShapes = new Shape[shapes.length + 10];
+                var newShapes = new Shape[shapes.length + 10];
                 for (int i = 0; i < size; i++) {
                     newShapes[i] = shapes[i];
                 }
@@ -41,13 +44,6 @@ public class ShapeGroup extends ComplexShape {
     }
 
     public boolean contains(int x, int y) {
-        for (Shape shape : shapes) {
-            if (shape != null) {
-                if (shape.contains(x, y)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return Arrays.stream(shapes).filter(Objects::nonNull).anyMatch(shape -> shape.contains(x, y));
     }
 }
