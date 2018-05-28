@@ -3,7 +3,6 @@ package com.zuehlke.cleancodeworkshop.smellyshapes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,10 +10,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("A shape group")
 public class ShapeGroupTest {
 
+    private ShapeGroup shapeGroup;
+
+    @BeforeEach
+    public void init() {
+        shapeGroup = new ShapeGroup();
+    }
+
     @Test
     @DisplayName("returns a valid xml representation containing all its shapes when converted to xml")
     public void toXml() {
-        ShapeGroup shapeGroup = new ShapeGroup();
         shapeGroup.add(new Rectangle(0, 0, 2, 1));
 
         String xml = shapeGroup.toXml();
@@ -25,7 +30,6 @@ public class ShapeGroupTest {
     @Test
     @DisplayName("cannot be added the same shape twice")
     public void add_sameElementTwice() {
-        ShapeGroup shapeGroup = new ShapeGroup();
         shapeGroup.setReadOnly(false);
 
         Circle circle = new Circle(0, 0, 0);
@@ -38,15 +42,12 @@ public class ShapeGroupTest {
     @Test
     @DisplayName("returns false if the shape group is empty")
     public void contains_pointNotInGroup() {
-        ShapeGroup shapeGroup = new ShapeGroup();
-
         assertFalse(shapeGroup.contains(0, 0));
     }
 
     @Test
     @DisplayName("returns true if at least one shape in the group contains a point")
     public void contains_pointInGroup() {
-        ShapeGroup shapeGroup = new ShapeGroup();
         shapeGroup.add(new Circle(0, 0, 0));
 
         assertTrue(shapeGroup.contains(0, 0));
@@ -55,7 +56,6 @@ public class ShapeGroupTest {
     @Test
     @DisplayName("returns false if no shape inside the group contains a point")
     public void contains_pointOutsideGroup() {
-        ShapeGroup shapeGroup = new ShapeGroup();
         shapeGroup.add(new Circle(0, 0, 0));
 
         assertFalse(shapeGroup.contains(1, 1));
@@ -64,15 +64,12 @@ public class ShapeGroupTest {
     @Test
     @DisplayName("returns false if null is passed to check for containment within the group")
     public void contains_null() {
-        ShapeGroup shapeGroup = new ShapeGroup();
-
         assertFalse(shapeGroup.contains(null));
     }
 
     @Test
     @DisplayName("returns true if the shape is contained with the shape group")
     public void contains_shapeInGroup() {
-        ShapeGroup shapeGroup = new ShapeGroup();
         Circle c = new Circle(0, 0, 0);
         shapeGroup.add(c);
 
@@ -105,7 +102,6 @@ public class ShapeGroupTest {
         @Test
         @DisplayName("increases the number of elements it can hold once exceeded")
         public void add_internalArraySizeExceeded() {
-            ShapeGroup shapeGroup = new ShapeGroup();
             shapeGroup.setReadOnly(false);
 
             for (int i = 0; i < 11; i++) {
@@ -113,6 +109,21 @@ public class ShapeGroupTest {
             }
 
             assertEquals(11, shapeGroup.size);
+        }
+
+        @Test
+        @DisplayName("won't increase the number of elements if the size limit is reached but already contains the element")
+        public void add_notIncreasingSizeIfElementNotAdded() {
+            shapeGroup.setReadOnly(false);
+
+            for (int i = 0; i < 9; i++) {
+                shapeGroup.add(new Circle(0, 0, 0));
+            }
+            var shape = new Circle(0, 0, 0);
+            shapeGroup.add(shape);
+            shapeGroup.add(shape);
+
+            assertEquals(10, shapeGroup.size);
         }
     }
 
