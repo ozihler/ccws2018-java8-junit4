@@ -1,5 +1,7 @@
 package com.zuehlke.cleancodeworkshop.smellyshapes;
 
+import java.util.stream.IntStream;
+
 public abstract class AbstractShape implements Shape {
 
     public String toXml() {
@@ -29,9 +31,7 @@ public abstract class AbstractShape implements Shape {
         } else if (this instanceof ShapeGroup) {
             ShapeGroup group = (ShapeGroup) this;
             builder.append("<shapegroup>\n");
-            for (int i = 0; i < group.size; i++) {
-                builder.append(group.shapes[i].toXml());
-            }
+            IntStream.range(0, group.size).mapToObj(i -> group.shapes[i].toXml()).forEach(builder::append);
             builder.append("</shapegroup>\n");
         } else {
             throw new IllegalArgumentException("Unknown shape type: " + this.getClass());
