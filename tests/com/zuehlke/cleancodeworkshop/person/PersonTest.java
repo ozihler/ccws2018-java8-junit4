@@ -1,11 +1,9 @@
 package com.zuehlke.cleancodeworkshop.person;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 @DisplayName("A person")
 public class PersonTest {
