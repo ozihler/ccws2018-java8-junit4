@@ -7,21 +7,21 @@ public abstract class AbstractShape implements Shape {
     public String toXml() {
         StringBuilder builder = new StringBuilder();
         if (this instanceof Circle) {
-            Circle circle = (Circle) this;
+            var circle = (Circle) this;
             builder.append("<circle");
             builder.append(" x=\"" + circle.getX() + "\"");
             builder.append(" y=\"" + circle.getY() + "\"");
             builder.append(" radius=\"" + circle.getRadius() + "\"");
             builder.append(" />\n");
         } else if (this instanceof Square) {
-            Square square = (Square) this;
+            var square = (Square) this;
             builder.append("<square");
             builder.append(" x=\"" + square.getX() + "\"");
             builder.append(" y=\"" + square.getY() + "\"");
             builder.append(" edgeLength=\"" + square.getWidth() + "\"");
             builder.append(" />\n");
         } else if (this instanceof Rectangle) {
-            Rectangle rectangle = (Rectangle) this;
+            var rectangle = (Rectangle) this;
             builder.append("<rectangle");
             builder.append(" x=\"" + rectangle.getX() + "\"");
             builder.append(" y=\"" + rectangle.getY() + "\"");
@@ -29,7 +29,7 @@ public abstract class AbstractShape implements Shape {
             builder.append(" height=\"" + rectangle.getHeight() + "\"");
             builder.append(" />\n");
         } else if (this instanceof ShapeGroup) {
-            ShapeGroup group = (ShapeGroup) this;
+            var group = (ShapeGroup) this;
             builder.append("<shapegroup>\n");
             IntStream.range(0, group.size).mapToObj(i -> group.shapes[i].toXml()).forEach(builder::append);
             builder.append("</shapegroup>\n");

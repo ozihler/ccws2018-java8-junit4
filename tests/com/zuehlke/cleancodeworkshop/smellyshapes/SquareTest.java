@@ -49,6 +49,17 @@ public class SquareTest {
     }
 
     @Test
+    @DisplayName("returns true if it contains two points and false if either of the two points is outside the square")
+    public void containsTwoPoints(){
+        Square square = new Square(0, 0, 2);
+        assertTrue(square.contains(1, 1, 2, 2));
+        assertTrue(square.contains(0, 1, 1, 2));
+
+        assertFalse(square.contains(3, 1, 2, 2));
+        assertFalse(square.contains(0, 1, 3, 2));
+    }
+
+    @Test
     @DisplayName("throws an exception when getHeight() is called")
     public void getHeigth() {
         assertThrows(RuntimeException.class, () -> new Square(0, 0, 0).getHeight());
