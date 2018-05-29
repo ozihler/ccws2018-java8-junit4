@@ -51,4 +51,18 @@ public class AuthorsService {
         return allBlogEntries;
     }
 
+    public Set<String> getAllBlogEntryTitles(){
+        var allBlogEntryTitles = new HashSet<String>();
+
+        for (var author : authors) {
+            if (author.getBlogEntries() != null) {
+                for (var blogEntry : author.getBlogEntries()) {
+                    allBlogEntryTitles.add(blogEntry.getTitle());
+                }
+            }
+        }
+
+        return allBlogEntryTitles;
+    }
+
 }

@@ -1,11 +1,10 @@
 package com.zuehlke.cleancodeworkshop.functionalprogramming;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -57,6 +56,26 @@ public class AuthorsServiceTest {
             List<BlogEntry> allEntries = authorsService.getAllBlogEntries();
 
             assertEquals(9, allEntries.size());
+        }
+    }
+
+    @Nested
+    @DisplayName("When getting all blog entry titles")
+    class whenGettingBlogEntryTitles {
+        @Test
+        @DisplayName("Then a set of all blog entry titles is returned")
+        public void thenAllBlogEntryTitlesAreReturned() {
+            Set<String> allEntries = authorsService.getAllBlogEntryTitles();
+
+            assertEquals(9, allEntries.size());
+            AuthorsFixture.asList()
+                    .stream()
+                    .map(author -> author.getBlogEntries())
+                    .filter(Objects::nonNull)
+                    .flatMap(Collection::stream)
+                    .map(BlogEntry::getTitle)
+                    .map(blogEntryTitle -> allEntries.contains(blogEntryTitle))
+                    .forEach(Assertions::assertTrue);
         }
     }
 
