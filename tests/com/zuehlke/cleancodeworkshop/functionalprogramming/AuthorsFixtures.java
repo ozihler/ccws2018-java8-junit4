@@ -3,7 +3,7 @@ package com.zuehlke.cleancodeworkshop.functionalprogramming;
 import java.util.Arrays;
 import java.util.List;
 
-public class AuthorsFixture {
+public class AuthorsFixtures {
 
     public static final Author AUTHOR_1 = new Author(
             "zuehlke",
