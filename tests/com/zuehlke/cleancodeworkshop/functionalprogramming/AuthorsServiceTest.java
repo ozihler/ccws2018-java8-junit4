@@ -11,6 +11,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//instead of junit5: useful naming standards for unit tests: http://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 @DisplayName("Given an AuthorService")
 public class AuthorsServiceTest {
 
