@@ -32,7 +32,13 @@ public class AuthorsFixture {
             )
     );
 
+
+    public static final Author AUTHOR_4 = new Author(
+            "awesome-company",
+            null
+    );
+
     public static List<Author> asList() {
-        return Arrays.asList(AUTHOR_1, AUTHOR_2, AUTHOR_3);
+        return Arrays.asList(AUTHOR_1, AUTHOR_2, AUTHOR_3, AUTHOR_4);
     }
 }

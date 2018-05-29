@@ -14,6 +14,7 @@ public class AuthorsService {
 
     public Set<String> getAllCompanyNames() {
         Set<String> allCompanies = new HashSet<>();
+
         for (var author : authors) {
             if (author.getCompany() != null) {
                 allCompanies.add(author.getCompany());
@@ -21,6 +22,18 @@ public class AuthorsService {
         }
 
         return allCompanies;
+    }
+
+    public List<BlogEntry> getAllBlogEntries() {
+        var allBlogEntries = new ArrayList<BlogEntry>();
+
+        for (var author : authors) {
+            if (author.getBlogEntries() != null) {
+                allBlogEntries.addAll(author.getBlogEntries());
+            }
+        }
+
+        return allBlogEntries;
     }
 
     public List<BlogEntry> getAllBlogEntriesFor(String company) {
@@ -32,18 +45,6 @@ public class AuthorsService {
                 if (blogEntries != null) {
                     allBlogEntries.addAll(blogEntries);
                 }
-            }
-        }
-
-        return allBlogEntries;
-    }
-
-    public List<BlogEntry> getAllBlogEntries() {
-        var allBlogEntries = new ArrayList<BlogEntry>();
-
-        for (var author : authors) {
-            if (author.getBlogEntries() != null) {
-                allBlogEntries.addAll(author.getBlogEntries());
             }
         }
 
