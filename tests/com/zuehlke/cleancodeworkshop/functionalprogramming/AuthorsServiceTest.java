@@ -65,8 +65,8 @@ public class AuthorsServiceTest {
         @Test
         @DisplayName("Then a set of all blog entry titles is returned")
         public void thenAllBlogEntryTitlesAreReturned() {
-
             assertEquals(9, authorsService.getAllBlogEntryTitles().size());
+
             AuthorsFixture.asList()
                     .stream()
                     .map(Author::getBlogEntries)
