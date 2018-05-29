@@ -27,11 +27,9 @@ public class AuthorsServiceTest {
         @Test
         @DisplayName("Then a set of all existing companies is returned")
         public void testExtractCompanyNames() {
-            Set<String> allCompanyNames = authorsService.getAllCompanyNames();
-
-            assertEquals(2, allCompanyNames.size());
-            assertTrue(allCompanyNames.contains("zuehlke"));
-            assertTrue(allCompanyNames.contains("awesome-company"));
+            assertEquals(2, authorsService.getAllCompanyNames().size());
+            assertTrue(authorsService.getAllCompanyNames().contains("zuehlke"));
+            assertTrue(authorsService.getAllCompanyNames().contains("awesome-company"));
         }
     }
 
@@ -41,9 +39,7 @@ public class AuthorsServiceTest {
         @Test
         @DisplayName("Then a list of all blog entries of the specified company is returned")
         public void testExtractBlogEntriesFromAuthorsByCompany() {
-            List<BlogEntry> allEntries = authorsService.getAllBlogEntriesFor("zuehlke");
-
-            assertEquals(7, allEntries.size());
+            assertEquals(7, authorsService.getAllBlogEntriesFor("zuehlke").size());
         }
     }
 
@@ -53,9 +49,7 @@ public class AuthorsServiceTest {
         @Test
         @DisplayName("Then a list of all blog entries is returned")
         public void testExtractBlogEntriesFromAuthorsByCompany() {
-            List<BlogEntry> allEntries = authorsService.getAllBlogEntries();
-
-            assertEquals(9, allEntries.size());
+            assertEquals(9, authorsService.getAllBlogEntries().size());
         }
     }
 
