@@ -25,7 +25,7 @@ public class AuthorsServiceTest {
     @DisplayName("When getting all companies")
     class whenExtractingAllCompanies {
         @Test
-        @DisplayName("Then a set of all existing companies are returned")
+        @DisplayName("Then a set of all existing companies is returned")
         public void testExtractCompanyNames() {
             Set<String> allCompanyNames = authorsService.getAllCompanyNames();
 
@@ -39,11 +39,23 @@ public class AuthorsServiceTest {
     @DisplayName("When getting blog entries for a specified company")
     class whenExtractingWithAuthorsByCompany {
         @Test
-        @DisplayName("Then a list of all blog entries of the specified company are returned")
+        @DisplayName("Then a list of all blog entries of the specified company is returned")
         public void testExtractBlogEntriesFromAuthorsByCompany() {
             List<BlogEntry> allEntries = authorsService.getAllBlogEntriesFor("zuehlke");
 
             assertEquals(7, allEntries.size());
+        }
+    }
+
+    @Nested
+    @DisplayName("When getting all blog entries")
+    class whenGettingAllBlockEntries {
+        @Test
+        @DisplayName("Then a list of all blog entries is returned")
+        public void testExtractBlogEntriesFromAuthorsByCompany() {
+            List<BlogEntry> allEntries = authorsService.getAllBlogEntries();
+
+            assertEquals(9, allEntries.size());
         }
     }
 
