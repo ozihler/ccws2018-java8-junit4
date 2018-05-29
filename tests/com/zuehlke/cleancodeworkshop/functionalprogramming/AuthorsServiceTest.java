@@ -70,11 +70,11 @@ public class AuthorsServiceTest {
             assertEquals(9, allEntries.size());
             AuthorsFixture.asList()
                     .stream()
-                    .map(author -> author.getBlogEntries())
+                    .map(Author::getBlogEntries)
                     .filter(Objects::nonNull)
                     .flatMap(Collection::stream)
                     .map(BlogEntry::getTitle)
-                    .map(blogEntryTitle -> allEntries.contains(blogEntryTitle))
+                    .map(allEntries::contains)
                     .forEach(Assertions::assertTrue);
         }
     }
