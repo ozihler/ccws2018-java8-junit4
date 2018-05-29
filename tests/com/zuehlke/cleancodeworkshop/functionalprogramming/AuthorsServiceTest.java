@@ -65,16 +65,15 @@ public class AuthorsServiceTest {
         @Test
         @DisplayName("Then a set of all blog entry titles is returned")
         public void thenAllBlogEntryTitlesAreReturned() {
-            Set<String> allEntries = authorsService.getAllBlogEntryTitles();
 
-            assertEquals(9, allEntries.size());
+            assertEquals(9, authorsService.getAllBlogEntryTitles().size());
             AuthorsFixture.asList()
                     .stream()
                     .map(Author::getBlogEntries)
                     .filter(Objects::nonNull)
                     .flatMap(Collection::stream)
                     .map(BlogEntry::getTitle)
-                    .map(allEntries::contains)
+                    .map(authorsService.getAllBlogEntryTitles()::contains)
                     .forEach(Assertions::assertTrue);
         }
     }
