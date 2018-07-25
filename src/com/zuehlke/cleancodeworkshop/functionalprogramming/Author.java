@@ -18,4 +18,8 @@ public class Author {
     public List<BlogEntry> getBlogEntries() {
         return blogEntries;
     }
+
+    public boolean isAuthorOfCompany(String company) {
+        return getCompany().equalsIgnoreCase(company);
+    }
 }
