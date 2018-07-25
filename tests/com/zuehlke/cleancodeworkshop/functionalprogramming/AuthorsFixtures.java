@@ -20,7 +20,8 @@ public class AuthorsFixtures {
                     new BlogEntry("Programming with Python", "Programming is hard"),
                     new BlogEntry("Refactoring with Python", "Refactoring is even harder"),
                     new BlogEntry("Testing with Python", "Forget about testing"),
-                    new BlogEntry("I give up", "Why Python isn't a real programming language")
+                    null,
+                    new BlogEntry(null, null)
             )
     );
 
@@ -28,6 +29,7 @@ public class AuthorsFixtures {
             "awesome-company",
             Arrays.asList(
                     new BlogEntry("My awesome entry", "this is an awesome entry"),
+                    null,
                     new BlogEntry("My second awesome entry", "this is an even more awesome entry")
             )
     );
@@ -36,6 +38,6 @@ public class AuthorsFixtures {
     public static final Author AUTHOR_4 = new Author("awesome-company", null);
 
     public static List<Author> asList() {
-        return Arrays.asList(AUTHOR_1, AUTHOR_2, AUTHOR_3, AUTHOR_4);
+        return Arrays.asList(AUTHOR_1, AUTHOR_2, AUTHOR_3, AUTHOR_4, null, null);
     }
 }
