@@ -52,7 +52,7 @@ public class AuthorsService {
 
         for (var author : authors) {
             if (author != null) {
-                if (author.getCompany().equalsIgnoreCase(company)) {
+                if (author.worksFor(company)) {
                     var blogEntries = author.getBlogEntries();
                     if (blogEntries != null) {
                         for (var blogEntry : blogEntries) {

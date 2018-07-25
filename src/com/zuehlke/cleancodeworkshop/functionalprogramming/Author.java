@@ -19,7 +19,7 @@ public class Author {
         return blogEntries;
     }
 
-    public boolean isAuthorOfCompany(String company) {
+    public boolean worksFor(String company) {
         return getCompany().equalsIgnoreCase(company);
     }
 }
