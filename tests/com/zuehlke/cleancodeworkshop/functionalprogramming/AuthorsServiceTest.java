@@ -65,7 +65,9 @@ public class AuthorsServiceTest {
                     .map(Author::getBlogEntries)
                     .filter(Objects::nonNull)
                     .flatMap(Collection::stream)
+                    .filter(Objects::nonNull)
                     .map(BlogEntry::getTitle)
+                    .filter(Objects::nonNull)
                     .map(authorsService.getAllBlogEntryTitles()::contains)
                     .forEach(Assertions::assertTrue);
         }
