@@ -2,10 +2,7 @@ package com.zuehlke.cleancodeworkshop.functionalprogramming;
 
 import org.junit.platform.commons.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class AuthorsService {
     private List<Author> authors;
@@ -28,8 +25,8 @@ public class AuthorsService {
         return allCompanies;
     }
 
-    public List<BlogEntry> getAllBlogEntries() {
-        var allBlogEntries = new ArrayList<BlogEntry>();
+    public Set<BlogEntry> getAllBlogEntries() {
+        var allBlogEntries = new HashSet<BlogEntry>();
 
         for (var author : authors) {
             if (author != null) {
@@ -47,8 +44,8 @@ public class AuthorsService {
         return allBlogEntries;
     }
 
-    public List<BlogEntry> getAllBlogEntriesFor(String company) {
-        var allBlogEntries = new ArrayList<BlogEntry>();
+    public Set<BlogEntry> getAllBlogEntriesFor(String company) {
+        var allBlogEntries = new HashSet<BlogEntry>();
 
         for (var author : authors) {
             if (author != null) {
