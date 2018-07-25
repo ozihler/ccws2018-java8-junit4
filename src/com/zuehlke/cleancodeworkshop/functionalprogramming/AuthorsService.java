@@ -5,9 +5,9 @@ import org.junit.platform.commons.util.StringUtils;
 import java.util.*;
 
 public class AuthorsService {
-    private List<Author> authors;
+    private Set<Author> authors;
 
-    public AuthorsService(List<Author> authors) {
+    public AuthorsService(Set<Author> authors) {
         this.authors = authors;
     }
 
@@ -16,7 +16,7 @@ public class AuthorsService {
 
         for (var author : authors) {
             if (author != null) {
-                if (author.getCompany() != null) {
+                if (!StringUtils.isBlank(author.getCompany())) {
                     allCompanies.add(author.getCompany());
                 }
             }

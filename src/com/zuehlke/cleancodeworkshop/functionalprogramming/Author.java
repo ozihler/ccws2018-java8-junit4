@@ -1,12 +1,12 @@
 package com.zuehlke.cleancodeworkshop.functionalprogramming;
 
-import java.util.List;
+import java.util.Set;
 
 public class Author {
     private String company;
-    private List<BlogEntry> blogEntries;
+    private Set<BlogEntry> blogEntries;
 
-    public Author(String company, List<BlogEntry> blogEntries) {
+    public Author(String company, Set<BlogEntry> blogEntries) {
         this.company = company;
         this.blogEntries = blogEntries;
     }
@@ -15,7 +15,7 @@ public class Author {
         return this.company;
     }
 
-    public List<BlogEntry> getBlogEntries() {
+    public Set<BlogEntry> getBlogEntries() {
         return blogEntries;
     }
 

@@ -16,7 +16,7 @@ public class AuthorsServiceTest {
 
     @BeforeEach
     public void init() {
-        authorsService = new AuthorsService(AuthorsFixtures.asList());
+        authorsService = new AuthorsService(AuthorsFixtures.asSet());
     }
 
     @Nested
@@ -59,7 +59,7 @@ public class AuthorsServiceTest {
         public void thenAllBlogEntryTitlesAreReturned() {
             assertEquals(8, authorsService.getAllBlogEntryTitles().size());
 
-            AuthorsFixtures.asList()
+            AuthorsFixtures.asSet()
                     .stream()
                     .filter(Objects::nonNull)
                     .map(Author::getBlogEntries)
