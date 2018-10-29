@@ -1,5 +1,6 @@
 package com.zuehlke.cleancodeworkshop.smellyshapes;
 
+import com.zuehlke.cleancodeworkshop.smellyshapes.testclasses.UnknownShape;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,14 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class UnknownShapeTest {
 
     private UnknownShape unknownShape;
-
-    class UnknownShape extends AbstractShape{
-
-        @Override
-        public boolean contains(int x, int y) {
-            return false;
-        }
-    }
 
     @BeforeEach
     public void init(){
