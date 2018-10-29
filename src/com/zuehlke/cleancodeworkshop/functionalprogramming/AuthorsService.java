@@ -1,8 +1,8 @@
 package com.zuehlke.cleancodeworkshop.functionalprogramming;
 
-import org.junit.platform.commons.util.StringUtils;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AuthorsService {
     private Set<Author> authors;
@@ -16,7 +16,7 @@ public class AuthorsService {
 
         for (var author : authors) {
             if (author != null) {
-                if (!StringUtils.isBlank(author.getCompany())) {
+                if (author.getCompany() != null && !author.getCompany().isEmpty()) {
                     allCompanies.add(author.getCompany());
                 }
             }
@@ -74,7 +74,7 @@ public class AuthorsService {
                     for (var blogEntry : author.getBlogEntries()) {
                         if (blogEntry != null) {
                             String title = blogEntry.getTitle();
-                            if (!StringUtils.isBlank(title)) {
+                            if (title != null && !title.isEmpty()) {
                                 allBlogEntryTitles.add(title);
                             }
                         }
