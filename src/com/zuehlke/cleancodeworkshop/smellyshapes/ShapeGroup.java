@@ -2,6 +2,7 @@ package com.zuehlke.cleancodeworkshop.smellyshapes;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class ShapeGroup extends Shape {
 
@@ -63,5 +64,16 @@ public class ShapeGroup extends Shape {
 
     public void setReadOnly(boolean readOnly) {
         this.readOnly = readOnly;
+    }
+
+    @Override
+    public String toXml() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("<shapegroup>\n");
+        IntStream.range(0, this.size).mapToObj(i -> this.shapes[i].toXml()).forEach(builder::append);
+        builder.append("</shapegroup>\n");
+
+        return builder.toString();
     }
 }
