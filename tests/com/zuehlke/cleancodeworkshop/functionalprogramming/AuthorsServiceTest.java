@@ -1,76 +1,56 @@
 package com.zuehlke.cleancodeworkshop.functionalprogramming;
 
-import org.junit.jupiter.api.*;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Collection;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-//instead of junit5: useful naming standards for unit tests: http://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
-@DisplayName("Given an AuthorService")
 public class AuthorsServiceTest {
 
     private AuthorsService authorsService;
 
-    @BeforeEach
+    @Before
     public void init() {
         authorsService = new AuthorsService(AuthorsFixtures.asSet());
     }
 
-    @Nested
-    @DisplayName("When getting all companies")
-    class whenExtractingAllCompanies {
-        @Test
-        @DisplayName("Then a set of all existing companies is returned")
-        public void testExtractCompanyNames() {
-            assertEquals(2, authorsService.getAllCompanyNames().size());
-            assertTrue(authorsService.getAllCompanyNames().contains("zuehlke"));
-            assertTrue(authorsService.getAllCompanyNames().contains("awesome-company"));
-        }
+    @Test
+    public void testExtractCompanyNames() {
+        assertEquals(2, authorsService.getAllCompanyNames().size());
+        assertTrue(authorsService.getAllCompanyNames().contains("zuehlke"));
+        assertTrue(authorsService.getAllCompanyNames().contains("awesome-company"));
     }
 
-    @Nested
-    @DisplayName("When getting blog entries for a specified company")
-    class whenExtractingWithAuthorsByCompany {
-        @Test
-        @DisplayName("Then a list of all blog entries of the specified company is returned")
-        public void testExtractBlogEntriesFromAuthorsByCompany() {
-            assertEquals(7, authorsService.getAllBlogEntriesFor("zuehlke").size());
-        }
+
+    public void testExtractBlogEntriesFromAuthorsByCompany() {
+        assertEquals(7, authorsService.getAllBlogEntriesFor("zuehlke").size());
     }
 
-    @Nested
-    @DisplayName("When getting all blog entries")
-    class whenGettingAllBlockEntries {
-        @Test
-        @DisplayName("Then a list of all blog entries is returned")
-        public void testExtractBlogEntriesFromAuthorsByCompany() {
-            assertEquals(9, authorsService.getAllBlogEntries().size());
-        }
+    @Test
+    public void testExtractBlogEntriesFromAuthors() {
+        assertEquals(9, authorsService.getAllBlogEntries().size());
     }
 
-    @Nested
-    @DisplayName("When getting all blog entry titles")
-    class whenGettingBlogEntryTitles {
-        @Test
-        @DisplayName("Then a set of all blog entry titles is returned")
-        public void thenAllBlogEntryTitlesAreReturned() {
-            assertEquals(8, authorsService.getAllBlogEntryTitles().size());
+    @Test
+    public void thenAllBlogEntryTitlesAreReturned() {
+        assertEquals(8, authorsService.getAllBlogEntryTitles().size());
 
-            AuthorsFixtures.asSet()
-                    .stream()
-                    .filter(Objects::nonNull)
-                    .map(Author::getBlogEntries)
-                    .filter(Objects::nonNull)
-                    .flatMap(Collection::stream)
-                    .filter(Objects::nonNull)
-                    .map(BlogEntry::getTitle)
-                    .filter(Objects::nonNull)
-                    .map(authorsService.getAllBlogEntryTitles()::contains)
-                    .forEach(Assertions::assertTrue);
-        }
+        AuthorsFixtures.asSet()
+                .stream()
+                .filter(Objects::nonNull)
+                .map(Author::getBlogEntries)
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream)
+                .filter(Objects::nonNull)
+                .map(BlogEntry::getTitle)
+                .filter(Objects::nonNull)
+                .map(authorsService.getAllBlogEntryTitles()::contains)
+                .forEach(Assert::assertTrue);
     }
 
 

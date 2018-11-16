@@ -14,7 +14,7 @@ public class AuthorsService {
     public Set<String> getAllCompanyNames() {
         Set<String> allCompanies = new HashSet<>();
 
-        for (var author : authors) {
+        for (Author author : authors) {
             if (author != null) {
                 if (author.getCompany() != null && !author.getCompany().isEmpty()) {
                     allCompanies.add(author.getCompany());
@@ -26,13 +26,13 @@ public class AuthorsService {
     }
 
     public Set<BlogEntry> getAllBlogEntries() {
-        var allBlogEntries = new HashSet<BlogEntry>();
+        Set<BlogEntry> allBlogEntries = new HashSet<>();
 
-        for (var author : authors) {
+        for (Author author : authors) {
             if (author != null) {
-                var blogEntries = author.getBlogEntries();
+                Set<BlogEntry> blogEntries = author.getBlogEntries();
                 if (blogEntries != null) {
-                    for (var blogEntry : blogEntries) {
+                    for (BlogEntry blogEntry : blogEntries) {
                         if (blogEntry != null) {
                             allBlogEntries.add(blogEntry);
                         }
@@ -45,14 +45,14 @@ public class AuthorsService {
     }
 
     public Set<BlogEntry> getAllBlogEntriesFor(String company) {
-        var allBlogEntries = new HashSet<BlogEntry>();
+        Set<BlogEntry> allBlogEntries = new HashSet<BlogEntry>();
 
-        for (var author : authors) {
+        for (Author author : authors) {
             if (author != null) {
                 if (author.worksFor(company)) {
-                    var blogEntries = author.getBlogEntries();
+                    Set<BlogEntry> blogEntries = author.getBlogEntries();
                     if (blogEntries != null) {
-                        for (var blogEntry : blogEntries) {
+                        for (BlogEntry blogEntry : blogEntries) {
                             if (blogEntry != null) {
                                 allBlogEntries.add(blogEntry);
                             }
@@ -66,12 +66,12 @@ public class AuthorsService {
     }
 
     public Set<String> getAllBlogEntryTitles() {
-        var allBlogEntryTitles = new HashSet<String>();
+        Set<String> allBlogEntryTitles = new HashSet<String>();
 
-        for (var author : authors) {
+        for (Author author : authors) {
             if (author != null) {
                 if (author.getBlogEntries() != null) {
-                    for (var blogEntry : author.getBlogEntries()) {
+                    for (BlogEntry blogEntry : author.getBlogEntries()) {
                         if (blogEntry != null) {
                             String title = blogEntry.getTitle();
                             if (title != null && !title.isEmpty()) {

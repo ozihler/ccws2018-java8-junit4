@@ -22,7 +22,7 @@ public class ShapeGroup extends ComplexShape {
             if (!contains(shape)) {
                 int newSize = size + 1;
                 if (newSize > shapes.length) {
-                    var newShapes = new Shape[shapes.length + 10];
+                    Shape[] newShapes = new Shape[shapes.length + 10];
                     for (int i = 0; i < size; i++) {
                         newShapes[i] = shapes[i];
                     }
