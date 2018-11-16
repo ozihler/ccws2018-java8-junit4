@@ -45,7 +45,7 @@ public class AuthorsService {
     }
 
     public Set<BlogEntry> getAllBlogEntriesFor(String company) {
-        Set<BlogEntry> allBlogEntries = new HashSet<BlogEntry>();
+        Set<BlogEntry> allBlogEntries = new HashSet<>();
 
         for (Author author : authors) {
             if (author != null) {
@@ -66,7 +66,7 @@ public class AuthorsService {
     }
 
     public Set<String> getAllBlogEntryTitles() {
-        Set<String> allBlogEntryTitles = new HashSet<String>();
+        Set<String> allBlogEntryTitles = new HashSet<>();
 
         for (Author author : authors) {
             if (author != null) {
