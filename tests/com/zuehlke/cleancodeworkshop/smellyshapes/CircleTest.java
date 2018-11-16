@@ -3,6 +3,9 @@ package com.zuehlke.cleancodeworkshop.smellyshapes;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -11,28 +14,39 @@ public class CircleTest {
 
     private Circle circle;
 
+    public static List<Point> getPoints(int[] xCords, int[] yCords) {
+        List<Point> points = new ArrayList<>();
+        for (int i = 0; i < xCords.length; ++i) {
+            Point point = new Point(xCords[i], yCords[i]);
+            points.add(point);
+        }
+        return points;
+    }
+
     @Before
     public void setUp() {
-        circle = new Circle(0, 0, 1);
+        circle = new Circle(new Point(0, 0), 1);
         circle.setColor(new Color("Red"));
     }
 
     @Test
     public void contains() {
-        assertTrue(circle.contains(0, 0));
-        assertTrue(circle.contains(0, 1));
-        assertTrue(circle.contains(1, 0));
+        assertTrue(circle.contains(new Point(0, 0)));
+        assertTrue(circle.contains(new Point(0, 1)));
+        assertTrue(circle.contains(new Point(1, 0)));
 
-        assertFalse(circle.contains(1, 1));
-        assertFalse(circle.contains(-1, -1));
-        assertFalse(circle.contains(1, -1));
-        assertFalse(circle.contains(-1, 1));
+        assertFalse(circle.contains(new Point(1, 1)));
+        assertFalse(circle.contains(new Point(-1, -1)));
+        assertFalse(circle.contains(new Point(1, -1)));
+        assertFalse(circle.contains(new Point(-1, 1)));
 
     }
 
     @Test
     public void countContainingPoints() {
-        int result = circle.countContainingPoints(new int[]{0, 10}, new int[]{0, 10});
+        final int[] xCords = new int[]{0, 10};
+        final int[] yCords = new int[]{0, 10};
+        int result = circle.countContainingPoints(getPoints(xCords, yCords));
 
         assertEquals(1, result);
     }
