@@ -26,7 +26,7 @@ public class AuthorsServiceTest {
         assertTrue(authorsService.getAllCompanyNames().contains("awesome-company"));
     }
 
-
+    @Test
     public void testExtractBlogEntriesFromAuthorsByCompany() {
         assertEquals(7, authorsService.getAllBlogEntriesFor("zuehlke").size());
     }
